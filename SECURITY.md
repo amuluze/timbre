@@ -6,12 +6,12 @@
 
 **不要公开提交 issue。** 请通过以下方式私下联系维护者：
 
+- **GitHub 仓库的 Private vulnerability reporting**（Security → Report a vulnerability）：已启用，提交后直接进入私密漏洞队列
 - 邮件：<待补：安全联系邮箱>
-- 或使用 GitHub 仓库的 Private vulnerability reporting（Security → Report a vulnerability）
 
 邮件中请包含：受影响版本或提交、复现步骤、影响范围、是否已公开。我们会在 7 天内确认收到，并在修复发布后征询你是否公开致谢。
 
-> 当前状态：项目处于设计阶段、无发布版本。上述联系渠道在首个可运行版本发布前补全；在此之前的安全问题请在仓库私有渠道直接联系维护者。
+> 当前状态：项目处于设计阶段、无发布版本。Private vulnerability reporting 已于 2026-11-18 启用，可直接使用；邮件渠道在首个可运行版本发布前补全。
 
 ## 支持范围
 
