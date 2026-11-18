@@ -1,0 +1,25 @@
+# macOS
+.DS_Store
+
+# Node / 前端
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Go
+*.test
+*.out
+/bin/
+
+# Rust / Tauri
+target/
+
+# 环境与密钥
+.env
+.env.*
+*.local.json
+
+# 编辑器
+.idea/
+.vscode/
+*.swp
