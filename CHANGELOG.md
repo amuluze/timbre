@@ -4,6 +4,17 @@
 
 ## [Unreleased]
 
+### Added
+
+- 归档 axiom 页面替换可行性调研正文 `docs/research/axiom-page-migration.md`（2026-11-18）：补齐 axiom 页面层 27,702 行 / 宿主层 59,800 行 / 设计面 15,457 行的实测数据，逐项核对 MyGo v0.10.0 的能力覆盖与两个真缺口（CDP 浏览器操控、SSH）；新增 `docs/research/` 索引。
+- 新增 ADR-0001「桌面运行时选型」（`docs/adr/0001-desktop-runtime.md`，状态 Proposed）：桌面运行时提议为 Tauri 2 + React。
+
+### Changed
+
+- `README.md`「技术选型（未定）」改为「技术选型」，指向 ADR-0001 与归档调研；Roadmap 0.2 标注桌面运行时已提议。
+- `AGENTS.md`：技术选型条目改为指向 ADR-0001（未采纳前不据此动代码）。
+- `docs/adr/README.md`：「待归档材料」改为「已归档材料」并登记调研路径；索引补 ADR-0001。
+
 ## [0.0.1] - 2026-11-18
 
 > 0.0.1 对应仓库首个提交（tag `v0.0.1`），无更早的版本历史。
