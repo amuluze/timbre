@@ -1,0 +1,3256 @@
+{
+  "ax": "1.6",
+  "name": "timbre",
+  "tokens": {
+    "color-ink": {
+      "$type": "color",
+      "$value": {
+        "light": "#14181A",
+        "dark": "#E9ECEA"
+      }
+    },
+    "color-ink-mute": {
+      "$type": "color",
+      "$value": {
+        "light": "#5C6663",
+        "dark": "#98A29E"
+      }
+    },
+    "color-ink-faint": {
+      "$type": "color",
+      "$value": {
+        "light": "#8B9390",
+        "dark": "#6E7874"
+      }
+    },
+    "color-paper": {
+      "$type": "color",
+      "$value": {
+        "light": "#F5F6F3",
+        "dark": "#101413"
+      }
+    },
+    "color-surface": {
+      "$type": "color",
+      "$value": {
+        "light": "#FFFFFF",
+        "dark": "#191E1D"
+      }
+    },
+    "color-line": {
+      "$type": "color",
+      "$value": {
+        "light": "#D6DAD6",
+        "dark": "#2A312F"
+      }
+    },
+    "color-fundamental": {
+      "$type": "color",
+      "$value": {
+        "light": "#0E5C54",
+        "dark": "#35B7A4"
+      }
+    },
+    "color-fundamental-soft": {
+      "$type": "color",
+      "$value": {
+        "light": "#E3EFEC",
+        "dark": "#12312D"
+      }
+    },
+    "pitch-x": {
+      "$type": "color",
+      "$value": {
+        "light": "#4A524F",
+        "dark": "#B9C1BD"
+      }
+    },
+    "space-1": {
+      "$type": "dimension",
+      "$value": "4px"
+    },
+    "space-2": {
+      "$type": "dimension",
+      "$value": "8px"
+    },
+    "space-3": {
+      "$type": "dimension",
+      "$value": "12px"
+    },
+    "space-4": {
+      "$type": "dimension",
+      "$value": "16px"
+    },
+    "space-5": {
+      "$type": "dimension",
+      "$value": "24px"
+    },
+    "radius-1": {
+      "$type": "dimension",
+      "$value": "6px"
+    },
+    "radius-pill": {
+      "$type": "dimension",
+      "$value": "999px"
+    },
+    "text-section": {
+      "$type": "dimension",
+      "$value": "20px"
+    },
+    "text-ui": {
+      "$type": "dimension",
+      "$value": "15px"
+    },
+    "text-caption": {
+      "$type": "dimension",
+      "$value": "13px"
+    },
+    "text-micro": {
+      "$type": "dimension",
+      "$value": "12px"
+    },
+    "font-ui": {
+      "$type": "fontFamily",
+      "$value": "Inter, -apple-system, 'PingFang SC', system-ui, sans-serif"
+    },
+    "font-manuscript": {
+      "$type": "fontFamily",
+      "$value": "'Songti SC', 'Noto Serif SC', Georgia, serif"
+    }
+  },
+  "components": {},
+  "symbols": {
+    "NavItem": {
+      "props": {
+        "label": "string",
+        "icon": {
+          "enum": [
+            "message-square",
+            "circle-check",
+            "settings"
+          ]
+        }
+      },
+      "body": [
+        {
+          "id": "ni-row",
+          "kind": "frame",
+          "layout": "horizontal",
+          "children": [
+            {
+              "id": "ni-icon",
+              "kind": "icon",
+              "name": {
+                "$param": "icon"
+              },
+              "size": 15,
+              "fill": "$color-ink-mute"
+            },
+            {
+              "id": "ni-label",
+              "kind": "text",
+              "text": {
+                "$param": "label"
+              },
+              "fontSize": "$text-caption",
+              "fontWeight": 500,
+              "fontFamily": "$font-ui",
+              "lineHeight": {
+                "unit": "multiplier",
+                "value": 1.4
+              },
+              "wrap": "width",
+              "fill": "$color-ink",
+              "width": "fill_container",
+              "height": "fit_content"
+            }
+          ],
+          "gap": "$space-2",
+          "padding": [
+            0,
+            "$space-3",
+            0,
+            "$space-3"
+          ],
+          "height": 34,
+          "alignItems": "center",
+          "cornerRadius": "$radius-1"
+        }
+      ]
+    },
+    "NavItemActive": {
+      "props": {
+        "label": "string",
+        "icon": {
+          "enum": [
+            "message-square",
+            "circle-check",
+            "settings"
+          ]
+        }
+      },
+      "body": [
+        {
+          "id": "na-row",
+          "kind": "frame",
+          "layout": "horizontal",
+          "children": [
+            {
+              "id": "na-bar",
+              "kind": "rect",
+              "width": 2,
+              "height": 16,
+              "fill": "$color-fundamental"
+            },
+            {
+              "id": "na-icon",
+              "kind": "icon",
+              "name": {
+                "$param": "icon"
+              },
+              "size": 15,
+              "fill": "$color-fundamental"
+            },
+            {
+              "id": "na-label",
+              "kind": "text",
+              "text": {
+                "$param": "label"
+              },
+              "fontSize": "$text-caption",
+              "fontWeight": 500,
+              "fontFamily": "$font-ui",
+              "lineHeight": {
+                "unit": "multiplier",
+                "value": 1.4
+              },
+              "wrap": "width",
+              "fill": "$color-fundamental",
+              "width": "fill_container",
+              "height": "fit_content"
+            }
+          ],
+          "gap": "$space-2",
+          "padding": [
+            0,
+            "$space-3",
+            0,
+            "$space-3"
+          ],
+          "height": 34,
+          "fill": "$color-fundamental-soft",
+          "alignItems": "center",
+          "cornerRadius": "$radius-1"
+        }
+      ]
+    },
+    "ThreadRow": {
+      "props": {
+        "num": "string",
+        "text": "string",
+        "source": "string",
+        "state": "string",
+        "action": "string"
+      },
+      "body": [
+        {
+          "id": "tr-row",
+          "kind": "frame",
+          "layout": "horizontal",
+          "children": [
+            {
+              "id": "tr-n",
+              "kind": "text",
+              "text": {
+                "$param": "num"
+              },
+              "fontSize": "$text-micro",
+              "fontWeight": 400,
+              "fontFamily": "$font-ui",
+              "lineHeight": {
+                "unit": "multiplier",
+                "value": 1.4
+              },
+              "wrap": "width",
+              "fill": "$color-ink-faint",
+              "width": 34,
+              "height": "fit_content"
+            },
+            {
+              "id": "tr-t",
+              "kind": "text",
+              "text": {
+                "$param": "text"
+              },
+              "fontSize": "$text-caption",
+              "fontWeight": 400,
+              "fontFamily": "$font-ui",
+              "lineHeight": {
+                "unit": "multiplier",
+                "value": 1.65
+              },
+              "wrap": "width",
+              "fill": "$color-ink",
+              "width": "fill_container",
+              "height": "fit_content"
+            },
+            {
+              "id": "tr-s",
+              "kind": "text",
+              "text": {
+                "$param": "source"
+              },
+              "fontSize": "$text-micro",
+              "fontWeight": 400,
+              "fontFamily": "$font-ui",
+              "lineHeight": {
+                "unit": "multiplier",
+                "value": 1.3
+              },
+              "wrap": "width",
+              "fill": "$color-ink-faint",
+              "width": 86,
+              "height": "fit_content"
+            },
+            {
+              "id": "tr-st",
+              "kind": "text",
+              "text": {
+                "$param": "state"
+              },
+              "fontSize": "$text-micro",
+              "fontWeight": 400,
+              "fontFamily": "$font-ui",
+              "lineHeight": {
+                "unit": "multiplier",
+                "value": 1.3
+              },
+              "wrap": "width",
+              "fill": "$color-ink-mute",
+              "width": 64,
+              "height": "fit_content"
+            },
+            {
+              "id": "tr-ac",
+              "kind": "text",
+              "text": {
+                "$param": "action"
+              },
+              "fontSize": "$text-micro",
+              "fontWeight": 400,
+              "fontFamily": "$font-ui",
+              "lineHeight": {
+                "unit": "multiplier",
+                "value": 1.3
+              },
+              "wrap": "width",
+              "fill": "$color-fundamental",
+              "width": 48,
+              "height": "fit_content",
+              "textAlign": "right"
+            }
+          ],
+          "gap": "$space-3",
+          "width": "fill_container",
+          "height": "fit_content",
+          "alignItems": "start"
+        }
+      ]
+    },
+    "Chip": {
+      "props": {
+        "label": "string"
+      },
+      "body": [
+        {
+          "id": "ch-box",
+          "kind": "frame",
+          "layout": "horizontal",
+          "children": [
+            {
+              "id": "ch-l",
+              "kind": "text",
+              "text": {
+                "$param": "label"
+              },
+              "fontSize": "$text-micro",
+              "fontWeight": 400,
+              "fontFamily": "$font-ui",
+              "lineHeight": {
+                "unit": "multiplier",
+                "value": 1.3
+              },
+              "wrap": "width",
+              "fill": "$color-ink-mute",
+              "width": "fit_content",
+              "height": "fit_content"
+            }
+          ],
+          "padding": [
+            2,
+            "$space-2",
+            2,
+            "$space-2"
+          ],
+          "width": "fit_content",
+          "alignItems": "center",
+          "cornerRadius": "$radius-pill",
+          "stroke": "$color-line",
+          "strokeWidth": 1
+        }
+      ]
+    },
+    "StepRow": {
+      "props": {
+        "label": "string",
+        "meta": "string"
+      },
+      "body": [
+        {
+          "id": "sr-row",
+          "kind": "frame",
+          "layout": "horizontal",
+          "children": [
+            {
+              "id": "sr-icon",
+              "kind": "icon",
+              "name": "check",
+              "size": 13,
+              "fill": "$color-fundamental"
+            },
+            {
+              "id": "sr-label",
+              "kind": "text",
+              "text": {
+                "$param": "label"
+              },
+              "fontSize": "$text-caption",
+              "fontWeight": 500,
+              "fontFamily": "$font-ui",
+              "lineHeight": {
+                "unit": "multiplier",
+                "value": 1.4
+              },
+              "wrap": "width",
+              "fill": "$color-ink",
+              "width": "fit_content",
+              "height": "fit_content"
+            },
+            {
+              "id": "sr-meta",
+              "kind": "text",
+              "text": {
+                "$param": "meta"
+              },
+              "fontSize": "$text-micro",
+              "fontWeight": 400,
+              "fontFamily": "$font-ui",
+              "lineHeight": {
+                "unit": "multiplier",
+                "value": 1.3
+              },
+              "wrap": "width",
+              "fill": "$color-ink-faint",
+              "width": "fit_content",
+              "height": "fit_content"
+            }
+          ],
+          "gap": "$space-2",
+          "width": "fill_container",
+          "height": "fit_content",
+          "alignItems": "center"
+        }
+      ]
+    }
+  },
+  "pages": [
+    {
+      "id": "p-chat",
+      "name": "会话",
+      "width": 1440,
+      "height": 900,
+      "tree": [
+        {
+          "id": "ct-app",
+          "kind": "frame",
+          "layout": "horizontal",
+          "children": [
+            {
+              "id": "rl",
+              "kind": "frame",
+              "layout": "vertical",
+              "children": [
+                {
+                  "id": "rl-brand",
+                  "kind": "frame",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "id": "rl-cn",
+                      "kind": "text",
+                      "text": "腔调",
+                      "fontSize": "$text-section",
+                      "fontWeight": 600,
+                      "fontFamily": "$font-ui",
+                      "lineHeight": {
+                        "unit": "multiplier",
+                        "value": 1.2
+                      },
+                      "wrap": "width",
+                      "fill": "$color-ink",
+                      "width": "fit_content",
+                      "height": "fit_content"
+                    },
+                    {
+                      "id": "rl-en",
+                      "kind": "text",
+                      "text": "Timbre",
+                      "fontSize": "$text-micro",
+                      "fontWeight": 400,
+                      "fontFamily": "$font-ui",
+                      "lineHeight": {
+                        "unit": "multiplier",
+                        "value": 1.4
+                      },
+                      "wrap": "width",
+                      "fill": "$color-ink-mute",
+                      "width": "fit_content",
+                      "height": "fit_content"
+                    }
+                  ],
+                  "gap": 2
+                },
+                {
+                  "id": "rl-div",
+                  "kind": "part",
+                  "part": "divider"
+                },
+                {
+                  "id": "rl-nav",
+                  "kind": "frame",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "id": "rl-n1",
+                      "kind": "component",
+                      "name": "NavItemActive",
+                      "props": {
+                        "label": "会话",
+                        "icon": "message-square"
+                      }
+                    },
+                    {
+                      "id": "rl-n2",
+                      "kind": "component",
+                      "name": "NavItem",
+                      "props": {
+                        "label": "审阅",
+                        "icon": "circle-check"
+                      }
+                    },
+                    {
+                      "id": "rl-n3",
+                      "kind": "component",
+                      "name": "NavItem",
+                      "props": {
+                        "label": "设置",
+                        "icon": "settings"
+                      }
+                    }
+                  ],
+                  "gap": 2
+                },
+                {
+                  "id": "rl-sp",
+                  "kind": "frame",
+                  "layout": "vertical",
+                  "children": [],
+                  "width": "fill_container",
+                  "height": "fill_container"
+                },
+                {
+                  "id": "rl-acc",
+                  "kind": "text",
+                  "text": "@yehang_kiosk",
+                  "fontSize": "$text-micro",
+                  "fontWeight": 400,
+                  "fontFamily": "$font-ui",
+                  "lineHeight": {
+                    "unit": "multiplier",
+                    "value": 1.4
+                  },
+                  "wrap": "width",
+                  "fill": "$color-ink-mute",
+                  "width": "fit_content",
+                  "height": "fit_content"
+                }
+              ],
+              "gap": "$space-4",
+              "padding": [
+                "$space-4",
+                "$space-3",
+                "$space-4",
+                "$space-3"
+              ],
+              "width": 200,
+              "height": "fill_container",
+              "fill": "$color-surface"
+            },
+            {
+              "id": "ct-rule",
+              "kind": "rect",
+              "width": 1,
+              "height": 900,
+              "fill": "$color-line"
+            },
+            {
+              "id": "ct-main",
+              "kind": "frame",
+              "layout": "vertical",
+              "children": [
+                {
+                  "id": "ct-top",
+                  "kind": "frame",
+                  "layout": "horizontal",
+                  "children": [
+                    {
+                      "id": "ct-top-t",
+                      "kind": "frame",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "id": "ct-title",
+                          "kind": "text",
+                          "text": "新会话",
+                          "fontSize": "$text-section",
+                          "fontWeight": 600,
+                          "fontFamily": "$font-ui",
+                          "lineHeight": {
+                            "unit": "multiplier",
+                            "value": 1.3
+                          },
+                          "wrap": "width",
+                          "fill": "$color-ink",
+                          "width": "fit_content",
+                          "height": "fit_content"
+                        },
+                        {
+                          "id": "ct-meta",
+                          "kind": "text",
+                          "text": "deepseek-chat · 上下文只用本机文件 · 不连发布接口",
+                          "fontSize": "$text-micro",
+                          "fontWeight": 400,
+                          "fontFamily": "$font-ui",
+                          "lineHeight": {
+                            "unit": "multiplier",
+                            "value": 1.3
+                          },
+                          "wrap": "width",
+                          "fill": "$color-ink-mute",
+                          "width": "fit_content",
+                          "height": "fit_content"
+                        }
+                      ],
+                      "gap": 2
+                    },
+                    {
+                      "id": "ct-sp",
+                      "kind": "frame",
+                      "layout": "vertical",
+                      "children": [],
+                      "width": "fill_container",
+                      "height": 12
+                    },
+                    {
+                      "id": "ct-model",
+                      "kind": "frame",
+                      "layout": "horizontal",
+                      "children": [
+                        {
+                          "id": "ct-model-i",
+                          "kind": "icon",
+                          "name": "cpu",
+                          "size": 13,
+                          "fill": "$color-ink-mute"
+                        },
+                        {
+                          "id": "ct-model-t",
+                          "kind": "text",
+                          "text": "deepseek-chat",
+                          "fontSize": "$text-micro",
+                          "fontWeight": 400,
+                          "fontFamily": "$font-ui",
+                          "lineHeight": {
+                            "unit": "multiplier",
+                            "value": 1.3
+                          },
+                          "wrap": "width",
+                          "fill": "$color-ink-mute",
+                          "width": "fit_content",
+                          "height": "fit_content"
+                        }
+                      ],
+                      "gap": "$space-1",
+                      "padding": [
+                        "$space-1",
+                        "$space-3",
+                        "$space-1",
+                        "$space-3"
+                      ],
+                      "width": "fit_content",
+                      "height": 26,
+                      "alignItems": "center",
+                      "cornerRadius": "$radius-pill",
+                      "stroke": "$color-line",
+                      "strokeWidth": 1
+                    }
+                  ],
+                  "gap": "$space-3",
+                  "width": "fill_container",
+                  "height": "fit_content",
+                  "alignItems": "center"
+                },
+                {
+                  "id": "ct-cols",
+                  "kind": "frame",
+                  "layout": "horizontal",
+                  "children": [
+                    {
+                      "id": "ct-flow",
+                      "kind": "frame",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "id": "ct-m1",
+                          "kind": "frame",
+                          "layout": "horizontal",
+                          "children": [
+                            {
+                              "id": "ct-m1-p",
+                              "kind": "part",
+                              "part": "bubble",
+                              "variant": "user",
+                              "label": "我想写一条 X thread：我们店把关门时间挪到凌晨两点之后，看到的东西。重点不是生意变多，是客人变成了什么样的人。"
+                            }
+                          ],
+                          "width": "fill_container",
+                          "height": "fit_content",
+                          "justifyContent": "end"
+                        },
+                        {
+                          "id": "ct-m2",
+                          "kind": "frame",
+                          "layout": "vertical",
+                          "children": [
+                            {
+                              "id": "ct-m2-p",
+                              "kind": "text",
+                              "text": "读了两样东西：母稿和 X 腔调。按「首条下判断、thread 四条封顶」写了四条。",
+                              "fontSize": "$text-caption",
+                              "fontWeight": 400,
+                              "fontFamily": "$font-ui",
+                              "lineHeight": {
+                                "unit": "multiplier",
+                                "value": 1.6
+                              },
+                              "wrap": "width",
+                              "fill": "$color-ink",
+                              "width": "fill_container",
+                              "height": "fit_content"
+                            },
+                            {
+                              "id": "ct-steps",
+                              "kind": "frame",
+                              "layout": "vertical",
+                              "children": [
+                                {
+                                  "id": "ct-s1",
+                                  "kind": "component",
+                                  "name": "StepRow",
+                                  "props": {
+                                    "label": "读母稿",
+                                    "meta": "凌晨一点的骨汤，我蹲了三年 · 4 段"
+                                  }
+                                },
+                                {
+                                  "id": "ct-s2",
+                                  "kind": "component",
+                                  "name": "StepRow",
+                                  "props": {
+                                    "label": "读腔调",
+                                    "meta": "X v0.4 · 设计意向"
+                                  }
+                                },
+                                {
+                                  "id": "ct-s3",
+                                  "kind": "component",
+                                  "name": "StepRow",
+                                  "props": {
+                                    "label": "起草 thread",
+                                    "meta": "4 条 · 512 字"
+                                  }
+                                }
+                              ],
+                              "gap": "$space-1",
+                              "width": 520
+                            },
+                            {
+                              "id": "ct-card",
+                              "kind": "frame",
+                              "layout": "vertical",
+                              "children": [
+                                {
+                                  "id": "ct-card-h",
+                                  "kind": "frame",
+                                  "layout": "horizontal",
+                                  "children": [
+                                    {
+                                      "id": "ct-card-i",
+                                      "kind": "icon",
+                                      "name": "send",
+                                      "size": 14,
+                                      "fill": "$color-ink-mute"
+                                    },
+                                    {
+                                      "id": "ct-card-t",
+                                      "kind": "text",
+                                      "text": "thread · 4 条",
+                                      "fontSize": "$text-caption",
+                                      "fontWeight": 500,
+                                      "fontFamily": "$font-ui",
+                                      "lineHeight": {
+                                        "unit": "multiplier",
+                                        "value": 1.3
+                                      },
+                                      "wrap": "width",
+                                      "fill": "$color-ink",
+                                      "width": "fit_content",
+                                      "height": "fit_content"
+                                    },
+                                    {
+                                      "id": "ct-card-c",
+                                      "kind": "component",
+                                      "name": "Chip",
+                                      "props": {
+                                        "label": "未审"
+                                      }
+                                    },
+                                    {
+                                      "id": "ct-card-sp",
+                                      "kind": "frame",
+                                      "layout": "vertical",
+                                      "children": [],
+                                      "width": "fill_container",
+                                      "height": 12
+                                    },
+                                    {
+                                      "id": "ct-card-m",
+                                      "kind": "text",
+                                      "text": "512 字",
+                                      "fontSize": "$text-micro",
+                                      "fontWeight": 400,
+                                      "fontFamily": "$font-ui",
+                                      "lineHeight": {
+                                        "unit": "multiplier",
+                                        "value": 1.3
+                                      },
+                                      "wrap": "width",
+                                      "fill": "$color-ink-faint",
+                                      "width": "fit_content",
+                                      "height": "fit_content"
+                                    }
+                                  ],
+                                  "gap": "$space-2",
+                                  "width": "fill_container",
+                                  "height": "fit_content",
+                                  "alignItems": "center"
+                                },
+                                {
+                                  "id": "ct-card-d",
+                                  "kind": "part",
+                                  "part": "divider"
+                                },
+                                {
+                                  "id": "ct-cl1",
+                                  "kind": "frame",
+                                  "layout": "horizontal",
+                                  "children": [
+                                    {
+                                      "id": "ct-cl1n",
+                                      "kind": "text",
+                                      "text": "1/4",
+                                      "fontSize": "$text-micro",
+                                      "fontWeight": 400,
+                                      "fontFamily": "$font-ui",
+                                      "lineHeight": {
+                                        "unit": "multiplier",
+                                        "value": 1.4
+                                      },
+                                      "wrap": "width",
+                                      "fill": "$color-ink-faint",
+                                      "width": 28,
+                                      "height": "fit_content"
+                                    },
+                                    {
+                                      "id": "ct-cl1t",
+                                      "kind": "text",
+                                      "text": "小店做深夜生意，真正的成本不是食材，是把人熬住。",
+                                      "fontSize": "$text-micro",
+                                      "fontWeight": 400,
+                                      "fontFamily": "$font-ui",
+                                      "lineHeight": {
+                                        "unit": "multiplier",
+                                        "value": 1.5
+                                      },
+                                      "wrap": "width",
+                                      "fill": "$color-ink",
+                                      "width": "fill_container",
+                                      "height": "fit_content"
+                                    }
+                                  ],
+                                  "gap": "$space-2",
+                                  "width": "fill_container",
+                                  "height": "fit_content",
+                                  "alignItems": "start"
+                                },
+                                {
+                                  "id": "ct-cl2",
+                                  "kind": "frame",
+                                  "layout": "horizontal",
+                                  "children": [
+                                    {
+                                      "id": "ct-cl2n",
+                                      "kind": "text",
+                                      "text": "2/4",
+                                      "fontSize": "$text-micro",
+                                      "fontWeight": 400,
+                                      "fontFamily": "$font-ui",
+                                      "lineHeight": {
+                                        "unit": "multiplier",
+                                        "value": 1.4
+                                      },
+                                      "wrap": "width",
+                                      "fill": "$color-ink-faint",
+                                      "width": 28,
+                                      "height": "fit_content"
+                                    },
+                                    {
+                                      "id": "ct-cl2t",
+                                      "kind": "text",
+                                      "text": "只多来三类人就吃掉了三小时：代驾、护士、改方案的设计师。",
+                                      "fontSize": "$text-micro",
+                                      "fontWeight": 400,
+                                      "fontFamily": "$font-ui",
+                                      "lineHeight": {
+                                        "unit": "multiplier",
+                                        "value": 1.5
+                                      },
+                                      "wrap": "width",
+                                      "fill": "$color-ink",
+                                      "width": "fill_container",
+                                      "height": "fit_content"
+                                    }
+                                  ],
+                                  "gap": "$space-2",
+                                  "width": "fill_container",
+                                  "height": "fit_content",
+                                  "alignItems": "start"
+                                },
+                                {
+                                  "id": "ct-cl3",
+                                  "kind": "frame",
+                                  "layout": "horizontal",
+                                  "children": [
+                                    {
+                                      "id": "ct-cl3n",
+                                      "kind": "text",
+                                      "text": "3/4",
+                                      "fontSize": "$text-micro",
+                                      "fontWeight": 400,
+                                      "fontFamily": "$font-ui",
+                                      "lineHeight": {
+                                        "unit": "multiplier",
+                                        "value": 1.4
+                                      },
+                                      "wrap": "width",
+                                      "fill": "$color-ink-faint",
+                                      "width": 28,
+                                      "height": "fit_content"
+                                    },
+                                    {
+                                      "id": "ct-cl3t",
+                                      "kind": "text",
+                                      "text": "菜单只加了两个热菜。生意不是变多了，是变长了。",
+                                      "fontSize": "$text-micro",
+                                      "fontWeight": 400,
+                                      "fontFamily": "$font-ui",
+                                      "lineHeight": {
+                                        "unit": "multiplier",
+                                        "value": 1.5
+                                      },
+                                      "wrap": "width",
+                                      "fill": "$color-ink",
+                                      "width": "fill_container",
+                                      "height": "fit_content"
+                                    }
+                                  ],
+                                  "gap": "$space-2",
+                                  "width": "fill_container",
+                                  "height": "fit_content",
+                                  "alignItems": "start"
+                                },
+                                {
+                                  "id": "ct-cl4",
+                                  "kind": "frame",
+                                  "layout": "horizontal",
+                                  "children": [
+                                    {
+                                      "id": "ct-cl4n",
+                                      "kind": "text",
+                                      "text": "4/4",
+                                      "fontSize": "$text-micro",
+                                      "fontWeight": 400,
+                                      "fontFamily": "$font-ui",
+                                      "lineHeight": {
+                                        "unit": "multiplier",
+                                        "value": 1.4
+                                      },
+                                      "wrap": "width",
+                                      "fill": "$color-ink-faint",
+                                      "width": 28,
+                                      "height": "fit_content"
+                                    },
+                                    {
+                                      "id": "ct-cl4t",
+                                      "kind": "text",
+                                      "text": "深夜生意是等的生意，不是卖的生意。",
+                                      "fontSize": "$text-micro",
+                                      "fontWeight": 400,
+                                      "fontFamily": "$font-ui",
+                                      "lineHeight": {
+                                        "unit": "multiplier",
+                                        "value": 1.5
+                                      },
+                                      "wrap": "width",
+                                      "fill": "$color-ink",
+                                      "width": "fill_container",
+                                      "height": "fit_content"
+                                    }
+                                  ],
+                                  "gap": "$space-2",
+                                  "width": "fill_container",
+                                  "height": "fit_content",
+                                  "alignItems": "start"
+                                },
+                                {
+                                  "id": "ct-card-a",
+                                  "kind": "frame",
+                                  "layout": "horizontal",
+                                  "children": [
+                                    {
+                                      "id": "ct-card-go",
+                                      "kind": "frame",
+                                      "layout": "horizontal",
+                                      "children": [
+                                        {
+                                          "id": "ct-card-go-l",
+                                          "kind": "text",
+                                          "text": "去审阅",
+                                          "fontSize": "$color-surface",
+                                          "fontWeight": 500,
+                                          "fontFamily": "$font-ui",
+                                          "lineHeight": {
+                                            "unit": "multiplier",
+                                            "value": 1.3
+                                          },
+                                          "wrap": "width",
+                                          "fill": "$color-ink",
+                                          "width": "fit_content",
+                                          "height": "fit_content"
+                                        }
+                                      ],
+                                      "padding": [
+                                        "$space-2",
+                                        "$space-4",
+                                        "$space-2",
+                                        "$space-4"
+                                      ],
+                                      "width": "fit_content",
+                                      "height": 34,
+                                      "fill": "$color-fundamental",
+                                      "alignItems": "center",
+                                      "justifyContent": "center",
+                                      "cornerRadius": "$radius-1"
+                                    },
+                                    {
+                                      "id": "ct-card-more",
+                                      "kind": "text",
+                                      "text": "再收短一点",
+                                      "fontSize": "$text-micro",
+                                      "fontWeight": 400,
+                                      "fontFamily": "$font-ui",
+                                      "lineHeight": {
+                                        "unit": "multiplier",
+                                        "value": 1.3
+                                      },
+                                      "wrap": "width",
+                                      "fill": "$color-ink-mute",
+                                      "width": "fit_content",
+                                      "height": "fit_content"
+                                    },
+                                    {
+                                      "id": "ct-card-more2",
+                                      "kind": "text",
+                                      "text": "换个开头",
+                                      "fontSize": "$text-micro",
+                                      "fontWeight": 400,
+                                      "fontFamily": "$font-ui",
+                                      "lineHeight": {
+                                        "unit": "multiplier",
+                                        "value": 1.3
+                                      },
+                                      "wrap": "width",
+                                      "fill": "$color-ink-mute",
+                                      "width": "fit_content",
+                                      "height": "fit_content"
+                                    }
+                                  ],
+                                  "gap": "$space-3",
+                                  "width": "fill_container",
+                                  "height": "fit_content",
+                                  "alignItems": "center"
+                                }
+                              ],
+                              "gap": "$space-2",
+                              "padding": [
+                                "$space-4",
+                                "$space-4",
+                                "$space-4",
+                                "$space-4"
+                              ],
+                              "width": 640,
+                              "fill": "$color-surface",
+                              "cornerRadius": "$radius-1",
+                              "stroke": "$color-line",
+                              "strokeWidth": 1
+                            }
+                          ],
+                          "gap": "$space-3",
+                          "width": 640,
+                          "height": "fit_content"
+                        },
+                        {
+                          "id": "ct-m3",
+                          "kind": "frame",
+                          "layout": "horizontal",
+                          "children": [
+                            {
+                              "id": "ct-m3-p",
+                              "kind": "part",
+                              "part": "bubble",
+                              "variant": "user",
+                              "label": "第 2 条因果反了：不是「多来了三类人」，是「只多来三类人，就用完了三小时」。改掉。"
+                            }
+                          ],
+                          "width": "fill_container",
+                          "height": "fit_content",
+                          "justifyContent": "end"
+                        },
+                        {
+                          "id": "ct-m4",
+                          "kind": "frame",
+                          "layout": "vertical",
+                          "children": [
+                            {
+                              "id": "ct-m4-p",
+                              "kind": "text",
+                              "text": "改了第 2 条，其它三条不动。",
+                              "fontSize": "$text-caption",
+                              "fontWeight": 400,
+                              "fontFamily": "$font-ui",
+                              "lineHeight": {
+                                "unit": "multiplier",
+                                "value": 1.6
+                              },
+                              "wrap": "width",
+                              "fill": "$color-ink",
+                              "width": "fill_container",
+                              "height": "fit_content"
+                            },
+                            {
+                              "id": "ct-diff",
+                              "kind": "frame",
+                              "layout": "vertical",
+                              "children": [
+                                {
+                                  "id": "ct-diff-old",
+                                  "kind": "text",
+                                  "text": "旧：多来的只有三类人：代驾、下夜班的护士、抱着电脑改方案的设计师。",
+                                  "fontSize": "$text-micro",
+                                  "fontWeight": 400,
+                                  "fontFamily": "$font-ui",
+                                  "lineHeight": {
+                                    "unit": "multiplier",
+                                    "value": 1.5
+                                  },
+                                  "wrap": "width",
+                                  "fill": "$color-ink-faint",
+                                  "width": "fill_container",
+                                  "height": "fit_content"
+                                },
+                                {
+                                  "id": "ct-diff-new",
+                                  "kind": "text",
+                                  "text": "新：只多来三类人就吃掉了三小时：代驾、下夜班的护士、抱着电脑改方案的设计师。",
+                                  "fontSize": "$text-micro",
+                                  "fontWeight": 400,
+                                  "fontFamily": "$font-ui",
+                                  "lineHeight": {
+                                    "unit": "multiplier",
+                                    "value": 1.5
+                                  },
+                                  "wrap": "width",
+                                  "fill": "$color-ink",
+                                  "width": "fill_container",
+                                  "height": "fit_content"
+                                }
+                              ],
+                              "gap": "$space-1",
+                              "padding": [
+                                "$space-3",
+                                "$space-3",
+                                "$space-3",
+                                "$space-3"
+                              ],
+                              "width": 640,
+                              "fill": "$color-fundamental-soft",
+                              "cornerRadius": "$radius-1"
+                            },
+                            {
+                              "id": "ct-m4-a",
+                              "kind": "frame",
+                              "layout": "horizontal",
+                              "children": [
+                                {
+                                  "id": "ct-m4-go",
+                                  "kind": "frame",
+                                  "layout": "horizontal",
+                                  "children": [
+                                    {
+                                      "id": "ct-m4-go-l",
+                                      "kind": "text",
+                                      "text": "去审阅",
+                                      "fontSize": "$color-surface",
+                                      "fontWeight": 500,
+                                      "fontFamily": "$font-ui",
+                                      "lineHeight": {
+                                        "unit": "multiplier",
+                                        "value": 1.3
+                                      },
+                                      "wrap": "width",
+                                      "fill": "$color-ink",
+                                      "width": "fit_content",
+                                      "height": "fit_content"
+                                    }
+                                  ],
+                                  "padding": [
+                                    "$space-2",
+                                    "$space-4",
+                                    "$space-2",
+                                    "$space-4"
+                                  ],
+                                  "width": "fit_content",
+                                  "height": 34,
+                                  "fill": "$color-fundamental",
+                                  "alignItems": "center",
+                                  "justifyContent": "center",
+                                  "cornerRadius": "$radius-1"
+                                },
+                                {
+                                  "id": "ct-m4-more",
+                                  "kind": "text",
+                                  "text": "这条再短一点",
+                                  "fontSize": "$text-micro",
+                                  "fontWeight": 400,
+                                  "fontFamily": "$font-ui",
+                                  "lineHeight": {
+                                    "unit": "multiplier",
+                                    "value": 1.3
+                                  },
+                                  "wrap": "width",
+                                  "fill": "$color-ink-mute",
+                                  "width": "fit_content",
+                                  "height": "fit_content"
+                                }
+                              ],
+                              "gap": "$space-3",
+                              "width": "fit_content",
+                              "height": "fit_content",
+                              "alignItems": "center"
+                            }
+                          ],
+                          "gap": "$space-3",
+                          "width": 640,
+                          "height": "fit_content"
+                        }
+                      ],
+                      "gap": "$space-5",
+                      "width": 760,
+                      "height": "fit_content"
+                    },
+                    {
+                      "id": "ct-side",
+                      "kind": "frame",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "id": "ct-side-1",
+                          "kind": "frame",
+                          "layout": "vertical",
+                          "children": [
+                            {
+                              "id": "ct-side-1t",
+                              "kind": "text",
+                              "text": "这次会话",
+                              "fontSize": "$text-caption",
+                              "fontWeight": 500,
+                              "fontFamily": "$font-ui",
+                              "lineHeight": {
+                                "unit": "multiplier",
+                                "value": 1.3
+                              },
+                              "wrap": "width",
+                              "fill": "$color-ink",
+                              "width": "fit_content",
+                              "height": "fit_content"
+                            },
+                            {
+                              "id": "ct-side-1d",
+                              "kind": "part",
+                              "part": "divider"
+                            },
+                            {
+                              "id": "ct-side-1a",
+                              "kind": "text",
+                              "text": "读了 1 份母稿、1 份腔调脚本",
+                              "fontSize": "$text-micro",
+                              "fontWeight": 400,
+                              "fontFamily": "$font-ui",
+                              "lineHeight": {
+                                "unit": "multiplier",
+                                "value": 1.5
+                              },
+                              "wrap": "width",
+                              "fill": "$color-ink-mute",
+                              "width": "fill_container",
+                              "height": "fit_content"
+                            },
+                            {
+                              "id": "ct-side-1b",
+                              "kind": "text",
+                              "text": "产出 1 条 thread（4 条）",
+                              "fontSize": "$text-micro",
+                              "fontWeight": 400,
+                              "fontFamily": "$font-ui",
+                              "lineHeight": {
+                                "unit": "multiplier",
+                                "value": 1.5
+                              },
+                              "wrap": "width",
+                              "fill": "$color-ink-mute",
+                              "width": "fill_container",
+                              "height": "fit_content"
+                            },
+                            {
+                              "id": "ct-side-1c",
+                              "kind": "text",
+                              "text": "改了 1 次，未标记已审",
+                              "fontSize": "$text-micro",
+                              "fontWeight": 400,
+                              "fontFamily": "$font-ui",
+                              "lineHeight": {
+                                "unit": "multiplier",
+                                "value": 1.5
+                              },
+                              "wrap": "width",
+                              "fill": "$color-ink-mute",
+                              "width": "fill_container",
+                              "height": "fit_content"
+                            }
+                          ],
+                          "gap": "$space-2",
+                          "padding": [
+                            "$space-4",
+                            "$space-4",
+                            "$space-4",
+                            "$space-4"
+                          ],
+                          "width": "fill_container",
+                          "fill": "$color-surface",
+                          "cornerRadius": "$radius-1"
+                        },
+                        {
+                          "id": "ct-side-2",
+                          "kind": "frame",
+                          "layout": "vertical",
+                          "children": [
+                            {
+                              "id": "ct-side-2t",
+                              "kind": "text",
+                              "text": "会话与产出都存在本机；模型只读到工作区里的文件。",
+                              "fontSize": "$text-micro",
+                              "fontWeight": 400,
+                              "fontFamily": "$font-ui",
+                              "lineHeight": {
+                                "unit": "multiplier",
+                                "value": 1.5
+                              },
+                              "wrap": "width",
+                              "fill": "$color-ink-mute",
+                              "width": "fill_container",
+                              "height": "fit_content"
+                            }
+                          ],
+                          "padding": [
+                            "$space-4",
+                            "$space-4",
+                            "$space-4",
+                            "$space-4"
+                          ],
+                          "width": "fill_container",
+                          "fill": "$color-fundamental-soft",
+                          "cornerRadius": "$radius-1"
+                        }
+                      ],
+                      "gap": "$space-3",
+                      "width": 280,
+                      "height": "fit_content"
+                    }
+                  ],
+                  "gap": "$space-5",
+                  "width": "fill_container",
+                  "alignItems": "start"
+                },
+                {
+                  "id": "ct-composer",
+                  "kind": "frame",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "id": "ct-input",
+                      "kind": "text",
+                      "text": "再写一条更短的版本，只讲「等」这件事……",
+                      "fontSize": "$text-ui",
+                      "fontWeight": 400,
+                      "fontFamily": "$font-ui",
+                      "lineHeight": {
+                        "unit": "multiplier",
+                        "value": 1.4
+                      },
+                      "wrap": "width",
+                      "fill": "$color-ink-faint",
+                      "width": "fill_container",
+                      "height": "fit_content"
+                    },
+                    {
+                      "id": "ct-composer-b",
+                      "kind": "frame",
+                      "layout": "horizontal",
+                      "children": [
+                        {
+                          "id": "ct-hint",
+                          "kind": "text",
+                          "text": "⌘⏎ 发送 · 只用本机上下文",
+                          "fontSize": "$text-micro",
+                          "fontWeight": 400,
+                          "fontFamily": "$font-ui",
+                          "lineHeight": {
+                            "unit": "multiplier",
+                            "value": 1.3
+                          },
+                          "wrap": "width",
+                          "fill": "$color-ink-faint",
+                          "width": "fill_container",
+                          "height": "fit_content"
+                        },
+                        {
+                          "id": "ct-send",
+                          "kind": "frame",
+                          "layout": "horizontal",
+                          "children": [
+                            {
+                              "id": "ct-send-l",
+                              "kind": "text",
+                              "text": "发送",
+                              "fontSize": "$color-surface",
+                              "fontWeight": 500,
+                              "fontFamily": "$font-ui",
+                              "lineHeight": {
+                                "unit": "multiplier",
+                                "value": 1.3
+                              },
+                              "wrap": "width",
+                              "fill": "$color-ink",
+                              "width": "fit_content",
+                              "height": "fit_content"
+                            }
+                          ],
+                          "padding": [
+                            "$space-2",
+                            "$space-4",
+                            "$space-2",
+                            "$space-4"
+                          ],
+                          "width": "fit_content",
+                          "height": 34,
+                          "fill": "$color-fundamental",
+                          "alignItems": "center",
+                          "justifyContent": "center",
+                          "cornerRadius": "$radius-1"
+                        }
+                      ],
+                      "gap": "$space-3",
+                      "width": "fill_container",
+                      "height": "fit_content",
+                      "alignItems": "center"
+                    }
+                  ],
+                  "gap": "$space-2",
+                  "padding": [
+                    "$space-3",
+                    "$space-3",
+                    "$space-3",
+                    "$space-3"
+                  ],
+                  "width": "fill_container",
+                  "fill": "$color-surface",
+                  "cornerRadius": "$radius-1",
+                  "stroke": "$color-line",
+                  "strokeWidth": 1
+                }
+              ],
+              "gap": "$space-3",
+              "padding": [
+                "$space-4",
+                "$space-5",
+                "$space-4",
+                "$space-5"
+              ],
+              "width": "fill_container",
+              "height": "fill_container",
+              "fill": "$color-paper"
+            }
+          ],
+          "width": 1440,
+          "height": 900,
+          "fill": "$color-paper"
+        }
+      ]
+    },
+    {
+      "id": "p-review",
+      "name": "审阅",
+      "width": 1440,
+      "height": 900,
+      "tree": [
+        {
+          "id": "ws-app",
+          "kind": "frame",
+          "layout": "horizontal",
+          "children": [
+            {
+              "id": "rl",
+              "kind": "frame",
+              "layout": "vertical",
+              "children": [
+                {
+                  "id": "rl-brand",
+                  "kind": "frame",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "id": "rl-cn",
+                      "kind": "text",
+                      "text": "腔调",
+                      "fontSize": "$text-section",
+                      "fontWeight": 600,
+                      "fontFamily": "$font-ui",
+                      "lineHeight": {
+                        "unit": "multiplier",
+                        "value": 1.2
+                      },
+                      "wrap": "width",
+                      "fill": "$color-ink",
+                      "width": "fit_content",
+                      "height": "fit_content"
+                    },
+                    {
+                      "id": "rl-en",
+                      "kind": "text",
+                      "text": "Timbre",
+                      "fontSize": "$text-micro",
+                      "fontWeight": 400,
+                      "fontFamily": "$font-ui",
+                      "lineHeight": {
+                        "unit": "multiplier",
+                        "value": 1.4
+                      },
+                      "wrap": "width",
+                      "fill": "$color-ink-mute",
+                      "width": "fit_content",
+                      "height": "fit_content"
+                    }
+                  ],
+                  "gap": 2
+                },
+                {
+                  "id": "rl-div",
+                  "kind": "part",
+                  "part": "divider"
+                },
+                {
+                  "id": "rl-nav",
+                  "kind": "frame",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "id": "rl-n1",
+                      "kind": "component",
+                      "name": "NavItem",
+                      "props": {
+                        "label": "会话",
+                        "icon": "message-square"
+                      }
+                    },
+                    {
+                      "id": "rl-n2",
+                      "kind": "component",
+                      "name": "NavItem",
+                      "props": {
+                        "label": "审阅",
+                        "icon": "circle-check"
+                      }
+                    },
+                    {
+                      "id": "rl-n3",
+                      "kind": "component",
+                      "name": "NavItem",
+                      "props": {
+                        "label": "设置",
+                        "icon": "settings"
+                      }
+                    }
+                  ],
+                  "gap": 2
+                },
+                {
+                  "id": "rl-sp",
+                  "kind": "frame",
+                  "layout": "vertical",
+                  "children": [],
+                  "width": "fill_container",
+                  "height": "fill_container"
+                },
+                {
+                  "id": "rl-acc",
+                  "kind": "text",
+                  "text": "@yehang_kiosk",
+                  "fontSize": "$text-micro",
+                  "fontWeight": 400,
+                  "fontFamily": "$font-ui",
+                  "lineHeight": {
+                    "unit": "multiplier",
+                    "value": 1.4
+                  },
+                  "wrap": "width",
+                  "fill": "$color-ink-mute",
+                  "width": "fit_content",
+                  "height": "fit_content"
+                }
+              ],
+              "gap": "$space-4",
+              "padding": [
+                "$space-4",
+                "$space-3",
+                "$space-4",
+                "$space-3"
+              ],
+              "width": 200,
+              "height": "fill_container",
+              "fill": "$color-surface"
+            },
+            {
+              "id": "ws-rule",
+              "kind": "rect",
+              "width": 1,
+              "height": 900,
+              "fill": "$color-line"
+            },
+            {
+              "id": "ws-main",
+              "kind": "frame",
+              "layout": "vertical",
+              "children": [
+                {
+                  "id": "ws-top",
+                  "kind": "frame",
+                  "layout": "horizontal",
+                  "children": [
+                    {
+                      "id": "ws-title",
+                      "kind": "text",
+                      "text": "深夜生意是等的生意",
+                      "fontSize": "$text-section",
+                      "fontWeight": 600,
+                      "fontFamily": "$font-ui",
+                      "lineHeight": {
+                        "unit": "multiplier",
+                        "value": 1.3
+                      },
+                      "wrap": "width",
+                      "fill": "$color-ink",
+                      "width": "fit_content",
+                      "height": "fit_content"
+                    },
+                    {
+                      "id": "ws-meta",
+                      "kind": "text",
+                      "text": "X · thread 4 条 · 2 条已通过",
+                      "fontSize": "$text-micro",
+                      "fontWeight": 400,
+                      "fontFamily": "$font-ui",
+                      "lineHeight": {
+                        "unit": "multiplier",
+                        "value": 1.3
+                      },
+                      "wrap": "width",
+                      "fill": "$color-ink-mute",
+                      "width": "fit_content",
+                      "height": "fit_content"
+                    },
+                    {
+                      "id": "ws-sp",
+                      "kind": "frame",
+                      "layout": "vertical",
+                      "children": [],
+                      "width": "fill_container",
+                      "height": 12
+                    },
+                    {
+                      "id": "ws-b1",
+                      "kind": "frame",
+                      "layout": "horizontal",
+                      "children": [
+                        {
+                          "id": "ws-b1-l",
+                          "kind": "text",
+                          "text": "保存定稿",
+                          "fontSize": "$color-surface",
+                          "fontWeight": 500,
+                          "fontFamily": "$font-ui",
+                          "lineHeight": {
+                            "unit": "multiplier",
+                            "value": 1.3
+                          },
+                          "wrap": "width",
+                          "fill": "$color-ink",
+                          "width": "fit_content",
+                          "height": "fit_content"
+                        }
+                      ],
+                      "padding": [
+                        "$space-2",
+                        "$space-4",
+                        "$space-2",
+                        "$space-4"
+                      ],
+                      "width": "fit_content",
+                      "height": 34,
+                      "fill": "$color-fundamental",
+                      "alignItems": "center",
+                      "justifyContent": "center",
+                      "cornerRadius": "$radius-1"
+                    }
+                  ],
+                  "gap": "$space-3",
+                  "width": "fill_container",
+                  "height": "fit_content",
+                  "alignItems": "center"
+                },
+                {
+                  "id": "ws-strip",
+                  "kind": "frame",
+                  "layout": "horizontal",
+                  "children": [
+                    {
+                      "id": "ws-s1",
+                      "kind": "text",
+                      "text": "写给：凌晨下班的城郊年轻人",
+                      "fontSize": "$text-micro",
+                      "fontWeight": 400,
+                      "fontFamily": "$font-ui",
+                      "lineHeight": {
+                        "unit": "multiplier",
+                        "value": 1.4
+                      },
+                      "wrap": "width",
+                      "fill": "$color-ink-mute",
+                      "width": "fit_content",
+                      "height": "fit_content"
+                    },
+                    {
+                      "id": "ws-sr1",
+                      "kind": "rect",
+                      "width": 1,
+                      "height": 14,
+                      "fill": "$color-line"
+                    },
+                    {
+                      "id": "ws-s2",
+                      "kind": "text",
+                      "text": "想让人：记住这家开到两点的面馆",
+                      "fontSize": "$text-micro",
+                      "fontWeight": 400,
+                      "fontFamily": "$font-ui",
+                      "lineHeight": {
+                        "unit": "multiplier",
+                        "value": 1.4
+                      },
+                      "wrap": "width",
+                      "fill": "$color-ink-mute",
+                      "width": "fit_content",
+                      "height": "fit_content"
+                    },
+                    {
+                      "id": "ws-sr2",
+                      "kind": "rect",
+                      "width": 1,
+                      "height": 14,
+                      "fill": "$color-line"
+                    },
+                    {
+                      "id": "ws-s3",
+                      "kind": "text",
+                      "text": "不能说：感叹号、套话、没出处的数字",
+                      "fontSize": "$text-micro",
+                      "fontWeight": 400,
+                      "fontFamily": "$font-ui",
+                      "lineHeight": {
+                        "unit": "multiplier",
+                        "value": 1.4
+                      },
+                      "wrap": "width",
+                      "fill": "$color-ink-faint",
+                      "width": "fit_content",
+                      "height": "fit_content"
+                    }
+                  ],
+                  "gap": "$space-3",
+                  "width": "fill_container",
+                  "height": "fit_content",
+                  "alignItems": "center"
+                },
+                {
+                  "id": "ws-cols",
+                  "kind": "frame",
+                  "layout": "horizontal",
+                  "children": [
+                    {
+                      "id": "ws-ms",
+                      "kind": "frame",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "id": "ws-ms-rule",
+                          "kind": "rect",
+                          "width": "fill_container",
+                          "height": 2,
+                          "fill": "$color-ink"
+                        },
+                        {
+                          "id": "ws-ms-h",
+                          "kind": "frame",
+                          "layout": "horizontal",
+                          "children": [
+                            {
+                              "id": "ws-ms-n",
+                              "kind": "text",
+                              "text": "母稿",
+                              "fontSize": "$text-caption",
+                              "fontWeight": 500,
+                              "fontFamily": "$font-ui",
+                              "lineHeight": {
+                                "unit": "multiplier",
+                                "value": 1.3
+                              },
+                              "wrap": "width",
+                              "fill": "$color-ink",
+                              "width": "fill_container",
+                              "height": "fit_content"
+                            },
+                            {
+                              "id": "ws-ms-c",
+                              "kind": "text",
+                              "text": "218 字",
+                              "fontSize": "$text-micro",
+                              "fontWeight": 400,
+                              "fontFamily": "$font-ui",
+                              "lineHeight": {
+                                "unit": "multiplier",
+                                "value": 1.3
+                              },
+                              "wrap": "width",
+                              "fill": "$color-ink-faint",
+                              "width": "fit_content",
+                              "height": "fit_content"
+                            }
+                          ],
+                          "width": "fill_container",
+                          "height": "fit_content",
+                          "alignItems": "center"
+                        },
+                        {
+                          "id": "ws-ms-p1",
+                          "kind": "text",
+                          "text": "凌晨一点，夜航小馆的后厨还亮着灯。阿哲在挑第二锅骨汤，勺子提起来，汤面上那层油光要刚好能挂住。",
+                          "fontSize": "$text-caption",
+                          "fontWeight": 400,
+                          "fontFamily": "$font-manuscript",
+                          "lineHeight": {
+                            "unit": "multiplier",
+                            "value": 1.85
+                          },
+                          "wrap": "width",
+                          "fill": "$color-ink",
+                          "width": 320,
+                          "height": "fit_content"
+                        },
+                        {
+                          "id": "ws-ms-p2",
+                          "kind": "text",
+                          "text": "「深夜的客人不挑味道，挑的是有没有人等。」门外刚坐下第三拨客人——代驾、下夜班的护士、抱着电脑改方案的设计师。",
+                          "fontSize": "$text-caption",
+                          "fontWeight": 400,
+                          "fontFamily": "$font-manuscript",
+                          "lineHeight": {
+                            "unit": "multiplier",
+                            "value": 1.85
+                          },
+                          "wrap": "width",
+                          "fill": "$color-ink",
+                          "width": 320,
+                          "height": "fit_content"
+                        },
+                        {
+                          "id": "ws-ms-p3",
+                          "kind": "text",
+                          "text": "这一季把关门时间从 23 点挪到凌晨 2 点，菜单只加了两个热菜。生意不是变多了，是变长了。",
+                          "fontSize": "$text-caption",
+                          "fontWeight": 400,
+                          "fontFamily": "$font-manuscript",
+                          "lineHeight": {
+                            "unit": "multiplier",
+                            "value": 1.85
+                          },
+                          "wrap": "width",
+                          "fill": "$color-ink",
+                          "width": 320,
+                          "height": "fit_content"
+                        },
+                        {
+                          "id": "ws-ms-p4",
+                          "kind": "text",
+                          "text": "阿哲说不用写得太漂亮，「你就写我们每天怎么等」。所以这篇里没有一个形容词是我编的。",
+                          "fontSize": "$text-caption",
+                          "fontWeight": 400,
+                          "fontFamily": "$font-manuscript",
+                          "lineHeight": {
+                            "unit": "multiplier",
+                            "value": 1.85
+                          },
+                          "wrap": "width",
+                          "fill": "$color-ink",
+                          "width": 320,
+                          "height": "fit_content"
+                        },
+                        {
+                          "id": "ws-ms-div",
+                          "kind": "part",
+                          "part": "divider"
+                        },
+                        {
+                          "id": "ws-ms-act",
+                          "kind": "text",
+                          "text": "编辑母稿",
+                          "fontSize": "$text-micro",
+                          "fontWeight": 400,
+                          "fontFamily": "$font-ui",
+                          "lineHeight": {
+                            "unit": "multiplier",
+                            "value": 1.3
+                          },
+                          "wrap": "width",
+                          "fill": "$color-fundamental",
+                          "width": "fit_content",
+                          "height": "fit_content"
+                        }
+                      ],
+                      "gap": "$space-3",
+                      "width": 320,
+                      "height": "fit_content"
+                    },
+                    {
+                      "id": "ws-v",
+                      "kind": "rect",
+                      "width": 1,
+                      "height": 460,
+                      "fill": "$color-line"
+                    },
+                    {
+                      "id": "ws-th",
+                      "kind": "frame",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "id": "ws-th-rule",
+                          "kind": "rect",
+                          "width": "fill_container",
+                          "height": 2,
+                          "fill": "$pitch-x"
+                        },
+                        {
+                          "id": "ws-th-h",
+                          "kind": "frame",
+                          "layout": "horizontal",
+                          "children": [
+                            {
+                              "id": "ws-th-n",
+                              "kind": "text",
+                              "text": "X · thread",
+                              "fontSize": "$text-caption",
+                              "fontWeight": 500,
+                              "fontFamily": "$font-ui",
+                              "lineHeight": {
+                                "unit": "multiplier",
+                                "value": 1.3
+                              },
+                              "wrap": "width",
+                              "fill": "$color-ink",
+                              "width": "fit_content",
+                              "height": "fit_content"
+                            },
+                            {
+                              "id": "ws-th-c",
+                              "kind": "component",
+                              "name": "Chip",
+                              "props": {
+                                "label": "2 条已审"
+                              }
+                            },
+                            {
+                              "id": "ws-th-sp",
+                              "kind": "frame",
+                              "layout": "vertical",
+                              "children": [],
+                              "width": "fill_container",
+                              "height": 12
+                            },
+                            {
+                              "id": "ws-th-m",
+                              "kind": "text",
+                              "text": "每条 ≤280 字",
+                              "fontSize": "$text-micro",
+                              "fontWeight": 400,
+                              "fontFamily": "$font-ui",
+                              "lineHeight": {
+                                "unit": "multiplier",
+                                "value": 1.3
+                              },
+                              "wrap": "width",
+                              "fill": "$color-ink-faint",
+                              "width": "fit_content",
+                              "height": "fit_content"
+                            }
+                          ],
+                          "gap": "$space-2",
+                          "width": "fill_container",
+                          "height": "fit_content",
+                          "alignItems": "center"
+                        },
+                        {
+                          "id": "ws-th-1",
+                          "kind": "component",
+                          "name": "ThreadRow",
+                          "props": {
+                            "num": "1/4",
+                            "text": "小店做深夜生意，真正的成本不是食材，是把人熬住。门从 23 点挪到凌晨 2 点之后我才看清：多出来的三小时不是营业额，是耐力赛。",
+                            "source": "第 1·3 段",
+                            "state": "已通过",
+                            "action": "撤回"
+                          }
+                        },
+                        {
+                          "id": "ws-th-d1",
+                          "kind": "part",
+                          "part": "divider"
+                        },
+                        {
+                          "id": "ws-th-2",
+                          "kind": "component",
+                          "name": "ThreadRow",
+                          "props": {
+                            "num": "2/4",
+                            "text": "多来的只有三类人：代驾、下夜班的护士、抱着电脑改方案的设计师。他们不挑味道，挑的是有没有人在等。",
+                            "source": "第 2 段",
+                            "state": "已通过",
+                            "action": "撤回"
+                          }
+                        },
+                        {
+                          "id": "ws-th-d2",
+                          "kind": "part",
+                          "part": "divider"
+                        },
+                        {
+                          "id": "ws-th-3",
+                          "kind": "component",
+                          "name": "ThreadRow",
+                          "props": {
+                            "num": "3/4",
+                            "text": "所以菜单只加了两个热菜。生意不是变多了，是变长了——同一张桌子，坐得更久。",
+                            "source": "第 3 段",
+                            "state": "待审阅",
+                            "action": "通过"
+                          }
+                        },
+                        {
+                          "id": "ws-th-d3",
+                          "kind": "part",
+                          "part": "divider"
+                        },
+                        {
+                          "id": "ws-th-4",
+                          "kind": "component",
+                          "name": "ThreadRow",
+                          "props": {
+                            "num": "4/4",
+                            "text": "判断很简单：深夜生意是等的生意，不是卖的生意。想清楚这点再开门，比想清楚菜单重要。",
+                            "source": "取意第 4 段",
+                            "state": "待审阅",
+                            "action": "通过"
+                          }
+                        },
+                        {
+                          "id": "ws-th-de",
+                          "kind": "part",
+                          "part": "divider"
+                        },
+                        {
+                          "id": "ws-th-foot",
+                          "kind": "frame",
+                          "layout": "horizontal",
+                          "children": [
+                            {
+                              "id": "ws-th-f1",
+                              "kind": "text",
+                              "text": "每行右侧逐条通过",
+                              "fontSize": "$text-micro",
+                              "fontWeight": 400,
+                              "fontFamily": "$font-ui",
+                              "lineHeight": {
+                                "unit": "multiplier",
+                                "value": 1.3
+                              },
+                              "wrap": "width",
+                              "fill": "$color-fundamental",
+                              "width": "fit_content",
+                              "height": "fit_content"
+                            },
+                            {
+                              "id": "ws-th-fp",
+                              "kind": "frame",
+                              "layout": "vertical",
+                              "children": [],
+                              "width": "fill_container",
+                              "height": 12
+                            },
+                            {
+                              "id": "ws-th-f2",
+                              "kind": "text",
+                              "text": "全部通过后才能保存定稿；第 2 条偏长，建议删「所以」",
+                              "fontSize": "$text-micro",
+                              "fontWeight": 400,
+                              "fontFamily": "$font-ui",
+                              "lineHeight": {
+                                "unit": "multiplier",
+                                "value": 1.3
+                              },
+                              "wrap": "width",
+                              "fill": "$color-ink-faint",
+                              "width": "fit_content",
+                              "height": "fit_content"
+                            }
+                          ],
+                          "gap": "$space-2",
+                          "width": "fill_container",
+                          "height": "fit_content",
+                          "alignItems": "center"
+                        }
+                      ],
+                      "gap": "$space-3",
+                      "width": "fill_container",
+                      "height": "fit_content"
+                    }
+                  ],
+                  "gap": "$space-4",
+                  "width": "fill_container",
+                  "alignItems": "start"
+                },
+                {
+                  "id": "ws-foot",
+                  "kind": "text",
+                  "text": "改母稿会作废 thread；改单条只影响那一条。四条都通过后可保存定稿，存好之后你自己去 X 粘贴发布。",
+                  "fontSize": "$text-micro",
+                  "fontWeight": 400,
+                  "fontFamily": "$font-ui",
+                  "lineHeight": {
+                    "unit": "multiplier",
+                    "value": 1.4
+                  },
+                  "wrap": "width",
+                  "fill": "$color-ink-faint",
+                  "width": "fill_container",
+                  "height": "fit_content"
+                }
+              ],
+              "gap": "$space-3",
+              "padding": [
+                "$space-4",
+                "$space-5",
+                "$space-4",
+                "$space-5"
+              ],
+              "width": "fill_container",
+              "height": "fill_container",
+              "fill": "$color-paper"
+            }
+          ],
+          "width": 1440,
+          "height": 900,
+          "fill": "$color-paper"
+        }
+      ]
+    },
+    {
+      "id": "p-settings",
+      "name": "设置",
+      "width": 1440,
+      "height": 900,
+      "tree": [
+        {
+          "id": "st-app",
+          "kind": "frame",
+          "layout": "horizontal",
+          "children": [
+            {
+              "id": "rl",
+              "kind": "frame",
+              "layout": "vertical",
+              "children": [
+                {
+                  "id": "rl-brand",
+                  "kind": "frame",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "id": "rl-cn",
+                      "kind": "text",
+                      "text": "腔调",
+                      "fontSize": "$text-section",
+                      "fontWeight": 600,
+                      "fontFamily": "$font-ui",
+                      "lineHeight": {
+                        "unit": "multiplier",
+                        "value": 1.2
+                      },
+                      "wrap": "width",
+                      "fill": "$color-ink",
+                      "width": "fit_content",
+                      "height": "fit_content"
+                    },
+                    {
+                      "id": "rl-en",
+                      "kind": "text",
+                      "text": "Timbre",
+                      "fontSize": "$text-micro",
+                      "fontWeight": 400,
+                      "fontFamily": "$font-ui",
+                      "lineHeight": {
+                        "unit": "multiplier",
+                        "value": 1.4
+                      },
+                      "wrap": "width",
+                      "fill": "$color-ink-mute",
+                      "width": "fit_content",
+                      "height": "fit_content"
+                    }
+                  ],
+                  "gap": 2
+                },
+                {
+                  "id": "rl-div",
+                  "kind": "part",
+                  "part": "divider"
+                },
+                {
+                  "id": "rl-nav",
+                  "kind": "frame",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "id": "rl-n1",
+                      "kind": "component",
+                      "name": "NavItem",
+                      "props": {
+                        "label": "会话",
+                        "icon": "message-square"
+                      }
+                    },
+                    {
+                      "id": "rl-n2",
+                      "kind": "component",
+                      "name": "NavItem",
+                      "props": {
+                        "label": "审阅",
+                        "icon": "circle-check"
+                      }
+                    },
+                    {
+                      "id": "rl-n3",
+                      "kind": "component",
+                      "name": "NavItemActive",
+                      "props": {
+                        "label": "设置",
+                        "icon": "settings"
+                      }
+                    }
+                  ],
+                  "gap": 2
+                },
+                {
+                  "id": "rl-sp",
+                  "kind": "frame",
+                  "layout": "vertical",
+                  "children": [],
+                  "width": "fill_container",
+                  "height": "fill_container"
+                },
+                {
+                  "id": "rl-acc",
+                  "kind": "text",
+                  "text": "@yehang_kiosk",
+                  "fontSize": "$text-micro",
+                  "fontWeight": 400,
+                  "fontFamily": "$font-ui",
+                  "lineHeight": {
+                    "unit": "multiplier",
+                    "value": 1.4
+                  },
+                  "wrap": "width",
+                  "fill": "$color-ink-mute",
+                  "width": "fit_content",
+                  "height": "fit_content"
+                }
+              ],
+              "gap": "$space-4",
+              "padding": [
+                "$space-4",
+                "$space-3",
+                "$space-4",
+                "$space-3"
+              ],
+              "width": 200,
+              "height": "fill_container",
+              "fill": "$color-surface"
+            },
+            {
+              "id": "st-rule",
+              "kind": "rect",
+              "width": 1,
+              "height": 900,
+              "fill": "$color-line"
+            },
+            {
+              "id": "st-main",
+              "kind": "frame",
+              "layout": "vertical",
+              "children": [
+                {
+                  "id": "st-top",
+                  "kind": "frame",
+                  "layout": "horizontal",
+                  "children": [
+                    {
+                      "id": "st-top-t",
+                      "kind": "frame",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "id": "st-title",
+                          "kind": "text",
+                          "text": "设置 · 大模型",
+                          "fontSize": "$text-section",
+                          "fontWeight": 600,
+                          "fontFamily": "$font-ui",
+                          "lineHeight": {
+                            "unit": "multiplier",
+                            "value": 1.3
+                          },
+                          "wrap": "width",
+                          "fill": "$color-ink",
+                          "width": "fit_content",
+                          "height": "fit_content"
+                        },
+                        {
+                          "id": "st-sub",
+                          "kind": "text",
+                          "text": "配好之后，会话窗口就能按你的要求写 thread。密钥只进系统钥匙串。",
+                          "fontSize": "$text-micro",
+                          "fontWeight": 400,
+                          "fontFamily": "$font-ui",
+                          "lineHeight": {
+                            "unit": "multiplier",
+                            "value": 1.3
+                          },
+                          "wrap": "width",
+                          "fill": "$color-ink-mute",
+                          "width": "fit_content",
+                          "height": "fit_content"
+                        }
+                      ],
+                      "gap": 2
+                    },
+                    {
+                      "id": "st-sp",
+                      "kind": "frame",
+                      "layout": "vertical",
+                      "children": [],
+                      "width": "fill_container",
+                      "height": 12
+                    },
+                    {
+                      "id": "st-test",
+                      "kind": "frame",
+                      "layout": "horizontal",
+                      "children": [
+                        {
+                          "id": "st-test-l",
+                          "kind": "text",
+                          "text": "测试连接",
+                          "fontSize": "$color-ink",
+                          "fontWeight": 500,
+                          "fontFamily": "$font-ui",
+                          "lineHeight": {
+                            "unit": "multiplier",
+                            "value": 1.3
+                          },
+                          "wrap": "width",
+                          "fill": "$color-ink",
+                          "width": "fit_content",
+                          "height": "fit_content"
+                        }
+                      ],
+                      "padding": [
+                        "$space-2",
+                        "$space-4",
+                        "$space-2",
+                        "$space-4"
+                      ],
+                      "width": "fit_content",
+                      "height": 34,
+                      "fill": "$color-surface",
+                      "alignItems": "center",
+                      "justifyContent": "center",
+                      "cornerRadius": "$radius-1",
+                      "stroke": "$color-line",
+                      "strokeWidth": 1
+                    },
+                    {
+                      "id": "st-save",
+                      "kind": "frame",
+                      "layout": "horizontal",
+                      "children": [
+                        {
+                          "id": "st-save-l",
+                          "kind": "text",
+                          "text": "保存",
+                          "fontSize": "$color-surface",
+                          "fontWeight": 500,
+                          "fontFamily": "$font-ui",
+                          "lineHeight": {
+                            "unit": "multiplier",
+                            "value": 1.3
+                          },
+                          "wrap": "width",
+                          "fill": "$color-ink",
+                          "width": "fit_content",
+                          "height": "fit_content"
+                        }
+                      ],
+                      "padding": [
+                        "$space-2",
+                        "$space-4",
+                        "$space-2",
+                        "$space-4"
+                      ],
+                      "width": "fit_content",
+                      "height": 34,
+                      "fill": "$color-fundamental",
+                      "alignItems": "center",
+                      "justifyContent": "center",
+                      "cornerRadius": "$radius-1"
+                    }
+                  ],
+                  "gap": "$space-2",
+                  "width": "fill_container",
+                  "height": "fit_content",
+                  "alignItems": "center"
+                },
+                {
+                  "id": "st-svc",
+                  "kind": "frame",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "id": "st-svc-t",
+                      "kind": "text",
+                      "text": "模型服务",
+                      "fontSize": "$text-caption",
+                      "fontWeight": 500,
+                      "fontFamily": "$font-ui",
+                      "lineHeight": {
+                        "unit": "multiplier",
+                        "value": 1.3
+                      },
+                      "wrap": "width",
+                      "fill": "$color-ink",
+                      "width": "fit_content",
+                      "height": "fit_content"
+                    },
+                    {
+                      "id": "st-svc-d1",
+                      "kind": "part",
+                      "part": "divider"
+                    },
+                    {
+                      "id": "st-svc-r1",
+                      "kind": "frame",
+                      "layout": "horizontal",
+                      "children": [
+                        {
+                          "id": "st-svc-r1-k",
+                          "kind": "text",
+                          "text": "供应商",
+                          "fontSize": "$text-caption",
+                          "fontWeight": 500,
+                          "fontFamily": "$font-ui",
+                          "lineHeight": {
+                            "unit": "multiplier",
+                            "value": 1.4
+                          },
+                          "wrap": "width",
+                          "fill": "$color-ink",
+                          "width": "fill_container",
+                          "height": "fit_content"
+                        },
+                        {
+                          "id": "st-svc-r1-v",
+                          "kind": "text",
+                          "text": "OpenAI 兼容",
+                          "fontSize": "$color-ink-mute",
+                          "fontWeight": 400,
+                          "fontFamily": "$font-ui",
+                          "lineHeight": {
+                            "unit": "multiplier",
+                            "value": 1.4
+                          },
+                          "wrap": "width",
+                          "fill": "$color-ink",
+                          "width": 280,
+                          "height": "fit_content"
+                        },
+                        {
+                          "id": "st-svc-r1-a",
+                          "kind": "text",
+                          "text": "更换",
+                          "fontSize": "$text-micro",
+                          "fontWeight": 400,
+                          "fontFamily": "$font-ui",
+                          "lineHeight": {
+                            "unit": "multiplier",
+                            "value": 1.3
+                          },
+                          "wrap": "width",
+                          "fill": "$color-fundamental",
+                          "width": 56,
+                          "height": "fit_content",
+                          "textAlign": "right"
+                        }
+                      ],
+                      "gap": "$space-3",
+                      "width": "fill_container",
+                      "height": 38,
+                      "alignItems": "center"
+                    },
+                    {
+                      "id": "st-svc-d2",
+                      "kind": "part",
+                      "part": "divider"
+                    },
+                    {
+                      "id": "st-svc-r2",
+                      "kind": "frame",
+                      "layout": "horizontal",
+                      "children": [
+                        {
+                          "id": "st-svc-r2-k",
+                          "kind": "text",
+                          "text": "Base URL",
+                          "fontSize": "$text-caption",
+                          "fontWeight": 500,
+                          "fontFamily": "$font-ui",
+                          "lineHeight": {
+                            "unit": "multiplier",
+                            "value": 1.4
+                          },
+                          "wrap": "width",
+                          "fill": "$color-ink",
+                          "width": "fill_container",
+                          "height": "fit_content"
+                        },
+                        {
+                          "id": "st-svc-r2-v",
+                          "kind": "text",
+                          "text": "https://api.deepseek.com/v1",
+                          "fontSize": "$color-ink-mute",
+                          "fontWeight": 400,
+                          "fontFamily": "$font-ui",
+                          "lineHeight": {
+                            "unit": "multiplier",
+                            "value": 1.4
+                          },
+                          "wrap": "width",
+                          "fill": "$color-ink",
+                          "width": 280,
+                          "height": "fit_content"
+                        }
+                      ],
+                      "gap": "$space-3",
+                      "width": "fill_container",
+                      "height": 38,
+                      "alignItems": "center"
+                    },
+                    {
+                      "id": "st-svc-d3",
+                      "kind": "part",
+                      "part": "divider"
+                    },
+                    {
+                      "id": "st-svc-r3",
+                      "kind": "frame",
+                      "layout": "horizontal",
+                      "children": [
+                        {
+                          "id": "st-svc-r3-k",
+                          "kind": "text",
+                          "text": "模型",
+                          "fontSize": "$text-caption",
+                          "fontWeight": 500,
+                          "fontFamily": "$font-ui",
+                          "lineHeight": {
+                            "unit": "multiplier",
+                            "value": 1.4
+                          },
+                          "wrap": "width",
+                          "fill": "$color-ink",
+                          "width": "fill_container",
+                          "height": "fit_content"
+                        },
+                        {
+                          "id": "st-svc-r3-v",
+                          "kind": "text",
+                          "text": "deepseek-chat",
+                          "fontSize": "$color-ink-mute",
+                          "fontWeight": 400,
+                          "fontFamily": "$font-ui",
+                          "lineHeight": {
+                            "unit": "multiplier",
+                            "value": 1.4
+                          },
+                          "wrap": "width",
+                          "fill": "$color-ink",
+                          "width": 280,
+                          "height": "fit_content"
+                        },
+                        {
+                          "id": "st-svc-r3-a",
+                          "kind": "text",
+                          "text": "拉取列表",
+                          "fontSize": "$text-micro",
+                          "fontWeight": 400,
+                          "fontFamily": "$font-ui",
+                          "lineHeight": {
+                            "unit": "multiplier",
+                            "value": 1.3
+                          },
+                          "wrap": "width",
+                          "fill": "$color-fundamental",
+                          "width": 56,
+                          "height": "fit_content",
+                          "textAlign": "right"
+                        }
+                      ],
+                      "gap": "$space-3",
+                      "width": "fill_container",
+                      "height": 38,
+                      "alignItems": "center"
+                    },
+                    {
+                      "id": "st-svc-d4",
+                      "kind": "part",
+                      "part": "divider"
+                    },
+                    {
+                      "id": "st-svc-r4",
+                      "kind": "frame",
+                      "layout": "horizontal",
+                      "children": [
+                        {
+                          "id": "st-svc-r4-k",
+                          "kind": "text",
+                          "text": "超时",
+                          "fontSize": "$text-caption",
+                          "fontWeight": 500,
+                          "fontFamily": "$font-ui",
+                          "lineHeight": {
+                            "unit": "multiplier",
+                            "value": 1.4
+                          },
+                          "wrap": "width",
+                          "fill": "$color-ink",
+                          "width": "fill_container",
+                          "height": "fit_content"
+                        },
+                        {
+                          "id": "st-svc-r4-n",
+                          "kind": "text",
+                          "text": "超时就停下并告诉你是哪一步",
+                          "fontSize": "$text-micro",
+                          "fontWeight": 400,
+                          "fontFamily": "$font-ui",
+                          "lineHeight": {
+                            "unit": "multiplier",
+                            "value": 1.4
+                          },
+                          "wrap": "width",
+                          "fill": "$color-ink-faint",
+                          "width": 220,
+                          "height": "fit_content"
+                        },
+                        {
+                          "id": "st-svc-r4-v",
+                          "kind": "text",
+                          "text": "60 秒",
+                          "fontSize": "$color-ink-mute",
+                          "fontWeight": 400,
+                          "fontFamily": "$font-ui",
+                          "lineHeight": {
+                            "unit": "multiplier",
+                            "value": 1.4
+                          },
+                          "wrap": "width",
+                          "fill": "$color-ink",
+                          "width": 280,
+                          "height": "fit_content"
+                        }
+                      ],
+                      "gap": "$space-3",
+                      "width": "fill_container",
+                      "height": 38,
+                      "alignItems": "center"
+                    }
+                  ],
+                  "gap": "$space-2",
+                  "padding": [
+                    "$space-5",
+                    "$space-5",
+                    "$space-5",
+                    "$space-5"
+                  ],
+                  "width": 820,
+                  "fill": "$color-surface",
+                  "cornerRadius": "$radius-1"
+                },
+                {
+                  "id": "st-cred",
+                  "kind": "frame",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "id": "st-cred-t",
+                      "kind": "text",
+                      "text": "凭据",
+                      "fontSize": "$text-caption",
+                      "fontWeight": 500,
+                      "fontFamily": "$font-ui",
+                      "lineHeight": {
+                        "unit": "multiplier",
+                        "value": 1.3
+                      },
+                      "wrap": "width",
+                      "fill": "$color-ink",
+                      "width": "fit_content",
+                      "height": "fit_content"
+                    },
+                    {
+                      "id": "st-cred-d1",
+                      "kind": "part",
+                      "part": "divider"
+                    },
+                    {
+                      "id": "st-cred-r1",
+                      "kind": "frame",
+                      "layout": "horizontal",
+                      "children": [
+                        {
+                          "id": "st-cred-r1-k",
+                          "kind": "text",
+                          "text": "API Key",
+                          "fontSize": "$text-caption",
+                          "fontWeight": 500,
+                          "fontFamily": "$font-ui",
+                          "lineHeight": {
+                            "unit": "multiplier",
+                            "value": 1.4
+                          },
+                          "wrap": "width",
+                          "fill": "$color-ink",
+                          "width": "fill_container",
+                          "height": "fit_content"
+                        },
+                        {
+                          "id": "st-cred-r1-v",
+                          "kind": "text",
+                          "text": "sk-••••••••7f2a · 已存系统钥匙串 · 10/28",
+                          "fontSize": "$color-ink-mute",
+                          "fontWeight": 400,
+                          "fontFamily": "$font-ui",
+                          "lineHeight": {
+                            "unit": "multiplier",
+                            "value": 1.4
+                          },
+                          "wrap": "width",
+                          "fill": "$color-ink",
+                          "width": 280,
+                          "height": "fit_content"
+                        },
+                        {
+                          "id": "st-cred-r1-a",
+                          "kind": "text",
+                          "text": "更换",
+                          "fontSize": "$text-micro",
+                          "fontWeight": 400,
+                          "fontFamily": "$font-ui",
+                          "lineHeight": {
+                            "unit": "multiplier",
+                            "value": 1.3
+                          },
+                          "wrap": "width",
+                          "fill": "$color-fundamental",
+                          "width": 56,
+                          "height": "fit_content",
+                          "textAlign": "right"
+                        }
+                      ],
+                      "gap": "$space-3",
+                      "width": "fill_container",
+                      "height": 38,
+                      "alignItems": "center"
+                    },
+                    {
+                      "id": "st-cred-d2",
+                      "kind": "part",
+                      "part": "divider"
+                    },
+                    {
+                      "id": "st-cred-r2",
+                      "kind": "frame",
+                      "layout": "horizontal",
+                      "children": [
+                        {
+                          "id": "st-cred-r2-k",
+                          "kind": "text",
+                          "text": "最近一次测试",
+                          "fontSize": "$text-caption",
+                          "fontWeight": 500,
+                          "fontFamily": "$font-ui",
+                          "lineHeight": {
+                            "unit": "multiplier",
+                            "value": 1.4
+                          },
+                          "wrap": "width",
+                          "fill": "$color-ink",
+                          "width": "fill_container",
+                          "height": "fit_content"
+                        },
+                        {
+                          "id": "st-cred-r2-v",
+                          "kind": "text",
+                          "text": "16:02 成功 · 412 ms",
+                          "fontSize": "$color-ink-mute",
+                          "fontWeight": 400,
+                          "fontFamily": "$font-ui",
+                          "lineHeight": {
+                            "unit": "multiplier",
+                            "value": 1.4
+                          },
+                          "wrap": "width",
+                          "fill": "$color-ink",
+                          "width": 280,
+                          "height": "fit_content"
+                        }
+                      ],
+                      "gap": "$space-3",
+                      "width": "fill_container",
+                      "height": 38,
+                      "alignItems": "center"
+                    },
+                    {
+                      "id": "st-cred-n",
+                      "kind": "frame",
+                      "layout": "horizontal",
+                      "children": [
+                        {
+                          "id": "st-cred-ni",
+                          "kind": "icon",
+                          "name": "check",
+                          "size": 13,
+                          "fill": "$color-fundamental"
+                        },
+                        {
+                          "id": "st-cred-nt",
+                          "kind": "text",
+                          "text": "连得上，模型回了 8 个字。会话窗口现在可以用了。",
+                          "fontSize": "$text-micro",
+                          "fontWeight": 400,
+                          "fontFamily": "$font-ui",
+                          "lineHeight": {
+                            "unit": "multiplier",
+                            "value": 1.5
+                          },
+                          "wrap": "width",
+                          "fill": "$color-ink-mute",
+                          "width": "fill_container",
+                          "height": "fit_content"
+                        }
+                      ],
+                      "gap": "$space-2",
+                      "width": "fill_container",
+                      "height": "fit_content",
+                      "alignItems": "center"
+                    }
+                  ],
+                  "gap": "$space-2",
+                  "padding": [
+                    "$space-5",
+                    "$space-5",
+                    "$space-5",
+                    "$space-5"
+                  ],
+                  "width": 820,
+                  "fill": "$color-surface",
+                  "cornerRadius": "$radius-1"
+                },
+                {
+                  "id": "st-gen",
+                  "kind": "frame",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "id": "st-gen-t",
+                      "kind": "text",
+                      "text": "生成参数",
+                      "fontSize": "$text-caption",
+                      "fontWeight": 500,
+                      "fontFamily": "$font-ui",
+                      "lineHeight": {
+                        "unit": "multiplier",
+                        "value": 1.3
+                      },
+                      "wrap": "width",
+                      "fill": "$color-ink",
+                      "width": "fit_content",
+                      "height": "fit_content"
+                    },
+                    {
+                      "id": "st-gen-d1",
+                      "kind": "part",
+                      "part": "divider"
+                    },
+                    {
+                      "id": "st-gen-r1",
+                      "kind": "frame",
+                      "layout": "horizontal",
+                      "children": [
+                        {
+                          "id": "st-gen-r1-k",
+                          "kind": "text",
+                          "text": "温度",
+                          "fontSize": "$text-caption",
+                          "fontWeight": 500,
+                          "fontFamily": "$font-ui",
+                          "lineHeight": {
+                            "unit": "multiplier",
+                            "value": 1.4
+                          },
+                          "wrap": "width",
+                          "fill": "$color-ink",
+                          "width": "fill_container",
+                          "height": "fit_content"
+                        },
+                        {
+                          "id": "st-gen-r1-n",
+                          "kind": "text",
+                          "text": "越高越放开，写运营稿建议 0.6–0.8",
+                          "fontSize": "$text-micro",
+                          "fontWeight": 400,
+                          "fontFamily": "$font-ui",
+                          "lineHeight": {
+                            "unit": "multiplier",
+                            "value": 1.4
+                          },
+                          "wrap": "width",
+                          "fill": "$color-ink-faint",
+                          "width": 220,
+                          "height": "fit_content"
+                        },
+                        {
+                          "id": "st-gen-r1-v",
+                          "kind": "text",
+                          "text": "0.7",
+                          "fontSize": "$color-ink-mute",
+                          "fontWeight": 400,
+                          "fontFamily": "$font-ui",
+                          "lineHeight": {
+                            "unit": "multiplier",
+                            "value": 1.4
+                          },
+                          "wrap": "width",
+                          "fill": "$color-ink",
+                          "width": 280,
+                          "height": "fit_content"
+                        }
+                      ],
+                      "gap": "$space-3",
+                      "width": "fill_container",
+                      "height": 38,
+                      "alignItems": "center"
+                    },
+                    {
+                      "id": "st-gen-d2",
+                      "kind": "part",
+                      "part": "divider"
+                    },
+                    {
+                      "id": "st-gen-r2",
+                      "kind": "frame",
+                      "layout": "horizontal",
+                      "children": [
+                        {
+                          "id": "st-gen-r2-k",
+                          "kind": "text",
+                          "text": "最大输出",
+                          "fontSize": "$text-caption",
+                          "fontWeight": 500,
+                          "fontFamily": "$font-ui",
+                          "lineHeight": {
+                            "unit": "multiplier",
+                            "value": 1.4
+                          },
+                          "wrap": "width",
+                          "fill": "$color-ink",
+                          "width": "fill_container",
+                          "height": "fit_content"
+                        },
+                        {
+                          "id": "st-gen-r2-v",
+                          "kind": "text",
+                          "text": "2,048 tokens",
+                          "fontSize": "$color-ink-mute",
+                          "fontWeight": 400,
+                          "fontFamily": "$font-ui",
+                          "lineHeight": {
+                            "unit": "multiplier",
+                            "value": 1.4
+                          },
+                          "wrap": "width",
+                          "fill": "$color-ink",
+                          "width": 280,
+                          "height": "fit_content"
+                        }
+                      ],
+                      "gap": "$space-3",
+                      "width": "fill_container",
+                      "height": 38,
+                      "alignItems": "center"
+                    },
+                    {
+                      "id": "st-gen-d3",
+                      "kind": "part",
+                      "part": "divider"
+                    },
+                    {
+                      "id": "st-gen-r3",
+                      "kind": "frame",
+                      "layout": "horizontal",
+                      "children": [
+                        {
+                          "id": "st-gen-r3-t",
+                          "kind": "frame",
+                          "layout": "vertical",
+                          "children": [
+                            {
+                              "id": "st-gen-r3-k",
+                              "kind": "text",
+                              "text": "生成前先给提纲",
+                              "fontSize": "$text-caption",
+                              "fontWeight": 500,
+                              "fontFamily": "$font-ui",
+                              "lineHeight": {
+                                "unit": "multiplier",
+                                "value": 1.4
+                              },
+                              "wrap": "width",
+                              "fill": "$color-ink",
+                              "width": "fit_content",
+                              "height": "fit_content"
+                            },
+                            {
+                              "id": "st-gen-r3-n",
+                              "kind": "text",
+                              "text": "先在会话里给三条要点，你点头再写",
+                              "fontSize": "$text-micro",
+                              "fontWeight": 400,
+                              "fontFamily": "$font-ui",
+                              "lineHeight": {
+                                "unit": "multiplier",
+                                "value": 1.4
+                              },
+                              "wrap": "width",
+                              "fill": "$color-ink-faint",
+                              "width": "fill_container",
+                              "height": "fit_content"
+                            }
+                          ],
+                          "gap": 2
+                        },
+                        {
+                          "id": "st-gen-r3-tr",
+                          "kind": "frame",
+                          "layout": "horizontal",
+                          "children": [
+                            {
+                              "id": "st-gen-r3-knob",
+                              "kind": "rect",
+                              "width": 14,
+                              "height": 14,
+                              "fill": "$color-surface",
+                              "cornerRadius": "$radius-pill"
+                            }
+                          ],
+                          "padding": [
+                            3,
+                            3,
+                            3,
+                            3
+                          ],
+                          "width": 36,
+                          "height": 20,
+                          "fill": "$color-fundamental",
+                          "alignItems": "center",
+                          "justifyContent": "end",
+                          "cornerRadius": "$radius-pill"
+                        }
+                      ],
+                      "gap": "$space-4",
+                      "width": "fill_container",
+                      "height": 44,
+                      "alignItems": "center"
+                    }
+                  ],
+                  "gap": "$space-2",
+                  "padding": [
+                    "$space-5",
+                    "$space-5",
+                    "$space-5",
+                    "$space-5"
+                  ],
+                  "width": 820,
+                  "fill": "$color-surface",
+                  "cornerRadius": "$radius-1"
+                },
+                {
+                  "id": "st-note",
+                  "kind": "frame",
+                  "layout": "horizontal",
+                  "children": [
+                    {
+                      "id": "st-note-i",
+                      "kind": "icon",
+                      "name": "shield",
+                      "size": 14,
+                      "fill": "$color-ink-mute"
+                    },
+                    {
+                      "id": "st-note-t",
+                      "kind": "text",
+                      "text": "密钥不进工作区文件；生成只读本机素材与腔调脚本，不上传草稿。",
+                      "fontSize": "$text-micro",
+                      "fontWeight": 400,
+                      "fontFamily": "$font-ui",
+                      "lineHeight": {
+                        "unit": "multiplier",
+                        "value": 1.5
+                      },
+                      "wrap": "width",
+                      "fill": "$color-ink-mute",
+                      "width": "fill_container",
+                      "height": "fit_content"
+                    }
+                  ],
+                  "gap": "$space-2",
+                  "width": "fill_container",
+                  "height": "fit_content",
+                  "alignItems": "center"
+                }
+              ],
+              "gap": "$space-3",
+              "padding": [
+                "$space-4",
+                "$space-5",
+                "$space-4",
+                "$space-5"
+              ],
+              "width": "fill_container",
+              "height": "fill_container",
+              "fill": "$color-paper"
+            }
+          ],
+          "width": 1440,
+          "height": 900,
+          "fill": "$color-paper"
+        }
+      ]
+    }
+  ]
+}

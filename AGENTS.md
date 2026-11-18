@@ -13,7 +13,7 @@
 - 文档语言：中文为主；代码标识符与 repo 名用英文小写（`timbre`）。
 - 品牌书写：中文「腔调」，英文「Timbre」，合并书写「腔调（Timbre）」；repo/二进制一律 `timbre`。
 - 规格先行：功能实现前先有 Task Spec（`.specs/tasks/<task-id>.md`，task-id 为小写英文短横线主题词，一个任务一份文件），长期业务边界写 Domain Spec（`.specs/domain/<domain-id>.md`）。模板与命名规则见 [`.specs/tasks/README.md`](.specs/tasks/README.md)、[`.specs/domain/README.md`](.specs/domain/README.md)。
-- 技术选型：桌面运行时已由 `docs/adr/0001-desktop-runtime.md` 提议为 Tauri 2 + React（状态 Proposed，未采纳前不据此动代码）；Agent 运行时语言尚未决策。涉及运行时/语言的改动，先补 ADR（`docs/adr/<NNNN>-<topic>.md`，模板 `docs/adr/0000-template.md`）再动代码。
+- 技术选型：桌面运行时已由 `docs/adr/0001-desktop-runtime.md` 收敛为 MyGo + 原生 UI（Go + `ui` 包，状态 Accepted）；界面与宿主统一在 Go，无 Node 工具链。Agent 运行时在 Go 进程内的形态尚未决策。涉及运行时/语言的改动，先补 ADR（`docs/adr/<NNNN>-<topic>.md`，模板 `docs/adr/0000-template.md`）再动代码。
 - 平台腔调矩阵是设计意向而非事实：权威来源是 `docs/platform-matrix.md`，修订只改该文件并在其「修订记录」中注明依据；`CHANGELOG.md` 仅在平台增删时记一行。
 - 事实与意向分开写：未经验证的判断标「设计意向」；引用外部调研须给出归档路径与日期，只写结论不算依据。
 

@@ -54,19 +54,19 @@ flowchart LR
 
 ## 🏗️ 技术选型
 
-桌面运行时已由 [ADR-0001](docs/adr/0001-desktop-runtime.md) 收敛为 **Tauri 2 + React**（状态 Proposed，待采纳）。
+桌面运行时已由 [ADR-0001](docs/adr/0001-desktop-runtime.md) 收敛为 **MyGo + 原生 UI**（Go + `ui` 包自绘，状态 Accepted）。
 
 | 方案 | 结论 |
 |---|---|
-| Tauri 2 + React | **选定**。Timbre 的核心资产是本地优先的特权边界与审批流，axiom 已把这层实现并固化为可测试的不变量；沿用同栈可避免在 v0.x 框架上重造 |
-| MyGo（Go + GPU 自绘） | 未选。单个 Go 二进制、启动即时、内存低，但 axiom 的 59,800 行 Rust 宿主需重写或经实验性原生模块挂载；详见 [ADR-0001](docs/adr/0001-desktop-runtime.md) |
+| [MyGo](https://github.com/egoist/mygo) + 原生 UI | **选定**。界面与宿主统一在 Go，单个 Go 二进制，无 Node 工具链；沿用 axiom 的本地优先边界形态而非其实现 |
+| Tauri 2 + React | 未选。与 axiom 同栈、生态成熟，但界面与 Agent 运行时分处 webview 与 Rust，webview 的内存与启动开销为代价 |
 
-选型依据的调研正文已归档：[`docs/research/axiom-page-migration.md`](docs/research/axiom-page-migration.md)（axiom 页面替换可行性，2026-11-18）。Agent 运行时语言与形态尚未决策，见 [ADR 索引](docs/adr/README.md)。命名决策与撞名证据另见 [docs/naming.md](docs/naming.md)。
+选型依据的调研正文已归档：[`docs/research/axiom-page-migration.md`](docs/research/axiom-page-migration.md)（axiom 页面替换可行性，2026-11-18）。Agent 运行时在 Go 进程内的形态尚未决策，见 [ADR 索引](docs/adr/README.md)。命名决策与撞名证据另见 [docs/naming.md](docs/naming.md)。
 
 ## 🗺️ Roadmap
 
 - [ ] **0.1 — Task Spec**：目标用户、平台清单、skill 体系形态、本地优先边界的规格收敛（[`.specs/`](.specs/tasks/README.md)）
-- [ ] **0.2 — 技术选型 ADR**：桌面运行时与 agent 运行时语言决策（[`docs/adr/`](docs/adr/README.md)；桌面运行时已由 [ADR-0001](docs/adr/0001-desktop-runtime.md) 提议）
+- [ ] **0.2 — 技术选型 ADR**：桌面运行时与 agent 运行时语言决策（[`docs/adr/`](docs/adr/README.md)；桌面运行时已由 [ADR-0001](docs/adr/0001-desktop-runtime.md) 收敛为 MyGo + 原生 UI）
 - [ ] **0.3 — MVP**：单平台（拟小红书）腔调 skill + 创作简报 → 变体 → 审阅的最小闭环
 - [ ] **0.4 — 多平台**：`docs/platform-matrix.md` 所列平台的腔调 skill 全量
 - [ ] **0.5 — 发布对接**：各平台发布能力与合规边界评估

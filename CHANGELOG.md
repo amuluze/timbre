@@ -7,13 +7,17 @@
 ### Added
 
 - 归档 axiom 页面替换可行性调研正文 `docs/research/axiom-page-migration.md`（2026-11-18）：补齐 axiom 页面层 27,702 行 / 宿主层 59,800 行 / 设计面 15,457 行的实测数据，逐项核对 MyGo v0.10.0 的能力覆盖与两个真缺口（CDP 浏览器操控、SSH）；新增 `docs/research/` 索引。
-- 新增 ADR-0001「桌面运行时选型」（`docs/adr/0001-desktop-runtime.md`，状态 Proposed）：桌面运行时提议为 Tauri 2 + React。
+- 新增 ADR-0001「桌面运行时选型」（`docs/adr/0001-desktop-runtime.md`，状态 Accepted）：桌面运行时收敛为 **MyGo + 原生 UI**（Go + `ui` 包自绘），界面与宿主统一在 Go，单个 Go 二进制交付。
 
 ### Changed
 
-- `README.md`「技术选型（未定）」改为「技术选型」，指向 ADR-0001 与归档调研；Roadmap 0.2 标注桌面运行时已提议。
-- `AGENTS.md`：技术选型条目改为指向 ADR-0001（未采纳前不据此动代码）。
-- `docs/adr/README.md`：「待归档材料」改为「已归档材料」并登记调研路径；索引补 ADR-0001。
+- 设计稿 `.pen/timbre.ax` 重整为四页（会话 / 音色对照 / 审阅 / 设置）：设计 token 补齐到 34 项（对齐 `DESIGN.md` 的 type scale、间距、圆角与平台音色）、修复 14 处字号误用颜色 token 的缺陷、清除全部「A · B · C」中点串、页标题提到 `text-display`、稿面正文改用衬线 17px / 行高 1.75、左轨统一 240px 并新增 340px 审阅轨；第一版范围收敛为单平台 X，不含发布队列。原三页稿留档于 `.pen/archive/timbre-3p-before-opt.ax`。
+- `DESIGN.md`「唯一视觉主角」补记第一版范围：音色对照在第一版为「母稿 + X 变体」两列并置，不做五列与发布队列。
+- `README.md`「技术选型（未定）」改为「技术选型」，指向 ADR-0001 与归档调研；Roadmap 0.2 标注桌面运行时已收敛。
+- `AGENTS.md`：技术选型条目改为指向 ADR-0001（MyGo + 原生 UI，Accepted）。
+- `docs/adr/README.md`：「待归档材料」改为「已归档材料」并登记调研路径；索引补 ADR-0001；待写清单新增 Agent 运行时在 Go 进程内的形态。
+- `CONTRIBUTING.md`：「技术选型论证」方向改为 MyGo v0.x 变更风险、组件覆盖缺口与自建取舍阈值。
+- `.gitignore`：Go 段补充 MyGo 构建产物；Rust 段标注仅用于实验性原生模块。
 
 ## [0.0.1] - 2026-11-18
 

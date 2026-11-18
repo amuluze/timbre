@@ -1,7 +1,7 @@
 # macOS
 .DS_Store
 
-# Node / 前端
+# Node / 前端（仅 web 页面窗口与生成客户端用）
 node_modules/
 dist/
 *.tsbuildinfo
@@ -11,7 +11,11 @@ dist/
 *.out
 /bin/
 
-# Rust / Tauri
+# MyGo 构建产物
+mygo-app/
+*.app/
+
+# Rust（MyGo 原生模块；实验性，慎用）
 target/
 
 # 环境与密钥
